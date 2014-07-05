@@ -230,7 +230,7 @@ static void item_selected(GtkMenuItem *menu_item, gpointer user_data) {
   save_history();
   /* Paste the clipboard contents automatically if enabled */
   if (prefs.automatic_paste) {
-    gchar* cmd = g_strconcat("/bin/sh -c 'xdotool key ctrl+v'", NULL);
+    gchar* cmd = g_strconcat("/bin/sh -c 'xvkbd -text \"\\S\\[Insert]\" &> /dev/null'", NULL);
     GPid pid;
     gchar **argv;
     g_shell_parse_argv(cmd, NULL, &argv, NULL);
