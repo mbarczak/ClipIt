@@ -603,16 +603,17 @@ static GtkWidget *create_history_menu(GtkWidget *history_menu) {
 		gtk_menu_shell_append((GtkMenuShell*)history_menu, menu_item);
 	}
 	if (prefs.statics_show) {
-		/* -------------------- */
-		gtk_menu_shell_append((GtkMenuShell*)history_menu, gtk_separator_menu_item_new());
-
-		/* Items */
+		gboolean separator_added = FALSE;
 		GList *elem = history;
 		int elem_num = 0;
 		int elem_num_static = 1;
 		while (elem && (elem_num_static <= prefs.statics_items)) {
 			history_item *hitem = elem->data;
 			if (hitem->is_static) {
+				if (!separator_added) {
+					gtk_menu_shell_append((GtkMenuShell*)history_menu, gtk_separator_menu_item_new());
+					separator_added = TRUE;
+				}
 				GString* string = g_string_new((gchar*)hitem->content);
 				/* Ellipsize text */
 				string = ellipsize_string(string);
