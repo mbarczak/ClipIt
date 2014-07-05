@@ -323,6 +323,7 @@ static void read_actions()
       g_free(name);
       g_free(command);
     }
+    UNUSED(fread_return);
     fclose(actions_file);
   }
 }
@@ -526,6 +527,7 @@ static void read_excludes()
       gtk_list_store_set(exclude_list, &row_iter, 0, regex, -1);
       g_free(regex);
     }
+    UNUSED(fread_return);
     fclose(excludes_file);
   }
 }

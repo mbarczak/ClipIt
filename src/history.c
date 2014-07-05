@@ -84,6 +84,7 @@ static gboolean is_excluded(gchar *text)
 			if(result)
 				return result;
 		}
+		UNUSED(fread_return);
 		fclose(excludes_file);
 	}
 	return FALSE;
@@ -157,6 +158,7 @@ void read_history()
 					size = 0;
 			}
 		}
+		UNUSED(fread_return);
 		/* Close file and reverse the history to normal */
 		fclose(history_file);
 		history = g_list_reverse(history);

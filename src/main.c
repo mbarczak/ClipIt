@@ -428,6 +428,7 @@ static gboolean show_actions_menu(gpointer data) {
       g_signal_connect((GObject*)menu_item,        "activate",
                        (GCallback)action_selected, (gpointer)command);      
     }
+    UNUSED(fread_return);
     fclose(actions_file);
   }
   else

@@ -31,6 +31,8 @@ G_BEGIN_DECLS
 #define POPUP_DELAY    30
 #define CHECK_INTERVAL 500
 
+#define UNUSED(x)      (void)(x)
+
 typedef struct {
   gboolean  use_copy;         /* Use copy */
   gboolean  use_primary;      /* Use primary */
