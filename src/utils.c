@@ -78,12 +78,12 @@ GString *ellipsize_string(GString *string)
                 if (is_utf8)
                 {
                     gchar *end = g_utf8_substring(string->str, str_len - prefs.item_length, str_len);
-                    g_string_printf(string, "...%s", end);
+                    g_string_printf(string, "…%s", end);
                 }
                 else
                 {
                     string = g_string_erase(string, 0, str_len - (prefs.item_length));
-                    string = g_string_prepend(string, "...");
+                    string = g_string_prepend(string, "…");
                 }
                 break;
             case PANGO_ELLIPSIZE_MIDDLE:
@@ -91,12 +91,12 @@ GString *ellipsize_string(GString *string)
                 {
                     gchar *start = g_utf8_substring(string->str, 0, prefs.item_length/2);
                     gchar *end = g_utf8_substring(string->str, str_len - prefs.item_length/2, str_len);
-                    g_string_printf(string, "%s...%s", start, end);
+                    g_string_printf(string, "%s…%s", start, end);
                 }
                 else
                 {
                     string = g_string_erase(string, (prefs.item_length/2), str_len - (prefs.item_length));
-                    string = g_string_insert(string, (string->len/2), "...");
+                    string = g_string_insert(string, (string->len/2), "…");
                 }
                 break;
             case PANGO_ELLIPSIZE_END:
@@ -109,7 +109,7 @@ GString *ellipsize_string(GString *string)
                 {
                     string = g_string_truncate(string, prefs.item_length);
                 }
-                string = g_string_append(string, "...");
+                string = g_string_append(string, "…");
                 break;
         }
     }
