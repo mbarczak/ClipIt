@@ -67,7 +67,7 @@ prefs_t prefs = {DEF_USE_COPY,         DEF_USE_PRIMARY,      DEF_SYNCHRONIZE,
                  INIT_SEARCH_KEY,      INIT_OFFLINE_KEY,     DEF_NO_ICON,
                  DEF_OFFLINE_MODE};
 
-/* Called every CHECK_INTERVAL seconds to check for new items */
+/* Called when clipboard content changes */
 static gboolean item_check(gpointer data) {
   /* Immediately return in offline mode */
   if (prefs.offline_mode)

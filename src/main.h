@@ -29,8 +29,6 @@ G_BEGIN_DECLS
 
 #define ACTIONS_TAB    2
 #define POPUP_DELAY    30
-#define CHECK_INTERVAL 500
-
 #define UNUSED(x)      (void)(x)
 
 typedef struct {
