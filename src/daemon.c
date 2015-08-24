@@ -23,7 +23,6 @@
 #include <gtk/gtk.h>
 #include "daemon.h"
 
-static gint timeout_id;
 static gchar *primary_text;
 static gchar *clipboard_text;
 static GtkClipboard *primary;
