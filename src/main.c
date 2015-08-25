@@ -67,7 +67,7 @@ prefs_t prefs = {DEF_USE_COPY,         DEF_USE_PRIMARY,      DEF_SYNCHRONIZE,
                  INIT_SEARCH_KEY,      INIT_OFFLINE_KEY,     DEF_NO_ICON,
                  DEF_OFFLINE_MODE};
 
-/* Called every CHECK_INTERVAL seconds to check for new items */
+/* Called when clipboard content changes */
 static gboolean item_check(gpointer data) {
   /* Immediately return in offline mode */
   if (prefs.offline_mode)
@@ -808,7 +808,8 @@ static void clipit_init() {
 	/* Create clipboard */
 	primary = gtk_clipboard_get(GDK_SELECTION_PRIMARY);
 	clipboard = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
-	g_timeout_add(CHECK_INTERVAL, item_check, NULL);
+	g_signal_connect(primary, "owner-change", G_CALLBACK(item_check), NULL);
+	g_signal_connect(clipboard, "owner-change", G_CALLBACK(item_check), NULL);
 
 	/* Read preferences */
 	read_preferences();
